@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Elzy's Moodboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="Elzy's Moodboard Logo" class="brand-logo">
+      <h1 class="brand-title">Elzy's Moodboard</h1> </div>
+    
+    <nav class="main-nav" aria-label="Primary Site Navigation">
+      <button class="nav-btn" data-page="landing">Landing</button>
+      <button class="nav-btn" data-page="home">Home</button>
+      <button class="nav-btn" data-page="styles">Styles</button>
+      <button class="nav-btn" data-page="tips">Tips</button>
+      <button class="nav-btn" data-page="profile">Profile</button>
+      <button class="nav-btn" data-page="help" aria-label="Help">?</button>
+    </nav>
+  </header>
+
+  <main class="pages">
+
+    <section id="landing" class="page active" aria-labelledby="landingTagline">
+      <div class="landing-inner">
+        <img src="assets/images/logo.png" alt="Elzy logo" class="landing-logo">
+        <h2 id="landingTagline" class="landing-h1">Dressing up is more than appearance.</h2> <p class="landing-p">
+          It’s how you carry your quiet confidence. Every detail, from color to silhouette,
+          tells a story that feels like you. Discover timeless combinations curated for real moods.
+        </p>
+        <button id="enterSite" class="btn-primary">Enter</button>
+      </div>
+    </section>
+
+    <section id="home" class="page hidden" aria-labelledby="homeTitle">
+      <h2 id="homeTitle" class="visually-hidden">Home</h2> <div class="home-inner">
+        <div class="carousel-wrap" aria-roledescription="carousel">
+          <div class="carousel-track" id="carouselTrack" role="list">
+            <article class="carousel-item" data-style="Coquette" role="listitem">
+              <img src="assets/images/style_lv1/coquette_style_lv1.jpg" alt="Coquette style outfit">
+              <h3 class="caption">Coquette</h3> </article>
+            <article class="carousel-item" data-style="Dark Coquette" role="listitem">
+              <img src="assets/images/style_lv1/darkcoquette_style_lv1.jpg" alt="Dark Coquette outfit">
+              <h3 class="caption">Dark Coquette</h3> </article>
+            <article class="carousel-item" data-style="Preppy" role="listitem">
+              <img src="assets/images/style_lv1/preppy_style_lv1.jpg" alt="Preppy outfit">
+              <h3 class="caption">Preppy</h3> </article>
+            <article class="carousel-item" data-style="Downtown" role="listitem">
+              <img src="assets/images/style_lv1/downtown_style_lv1.jpg" alt="Downtown outfit">
+              <h3 class="caption">Downtown</h3> </article>
+            <article class="carousel-item" data-style="Mori Kei" role="listitem">
+              <img src="assets/images/style_lv1/morikei_style_lv1.jpg" alt="Mori Kei outfit">
+              <h3 class="caption">Mori Kei</h3> </article>
+            <article class="carousel-item" data-style="Y2K Grunge" role="listitem">
+              <img src="assets/images/style_lv1/y2kgrunge_style_lv1.jpg" alt="Y2K Grunge outfit">
+              <h3 class="caption">Y2K Grunge</h3> </article>
+          </div>
+        </div>
+
+        <div class="carousel-footer">
+            <div class="home-text-block"> 
+                <h3 class="home-sub">Mix & Match your moods</h3> <p class="home-description">
+                    Discover new combinations that feel both effortless and true.
+                    From timeless to classics to soft grunge, your next favorite outfit starts here.
+                </p>
+            </div>
+            <div class="home-controls">
+                <button id="prevSlide" class="control" aria-label="Previous slide">‹</button>
+                <button id="nextSlide" class="control" aria-label="Next slide">›</button>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="styles" class="page hidden" aria-labelledby="stylesTitle">
+      <div class="styles-inner">
+        <h2 id="stylesTitle" class="section-title">Filter Styles</h2> <form class="filters" aria-label="Style filters">
+          <label>Body Type
+            <select id="filterBody">
+              <option value="all">All body types</option>
+              <option value="petite">Petite</option>
+              <option value="medium">Medium</option>
+              <option value="curvy">Curvy</option>
+            </select>
+          </label>
+          <label>Hijab
+            <select id="filterHijab">
+              <option value="all">All</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>Season
+            <select id="filterSeason">
+              <option value="all">All seasons</option>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="autumn">Autumn</option>
+              <option value="rain">Rain</option>
+              <option value="winter">Winter</option>
+            </select>
+          </label>
+          <label>Go For
+            <select id="filterGo">
+              <option value="all">All</option>
+              <option value="date">Date</option>
+              <option value="formal">Formal</option>
+              <option value="college">College</option>
+            </select>
+          </label>
+        </form>
+
+        <div id="styleGrid" class="style-grid" aria-live="polite">
+          </div>
+      </div>
+    </section>
+
+    <section id="style2" class="page hidden" aria-labelledby="currentStyle">
+      <div class="style2-inner">
+        <h2 id="currentStyle" class="section-title">Current Style: —</h2> <p class="choose-text">Choose Outfit Category:</p>
+        <nav class="category-grid" aria-label="Outfit Categories"> <button class="category-btn" data-cat="Tops">Tops</button>
+          <button class="category-btn" data-cat="Bottoms">Bottoms</button>
+          <button class="category-btn" data-cat="Dress">Dress</button>
+          <button class="category-btn" data-cat="Accessories">Accessories</button>
+        </nav>
+        <div class="back-to-styles"><button id="backToStyles" class="btn-secondary">Back to Styles</button></div>
+      </div>
+    </section>
+
+    <section id="style3" class="page hidden" aria-labelledby="style3Header">
+      <div class="style3-inner">
+        <h2 id="style3Header" class="section-title">Style · Category</h2> <div id="itemsGrid" class="items-grid">
+          </div>
+        <div class="back-to-cats"><button id="backToCats" class="btn-secondary">Back to Categories</button></div>
+      </div>
+    </section>
+
+    <section id="tips" class="page hidden" aria-labelledby="tipsTitle">
+      <div class="tips-inner">
+        <h2 id="tipsTitle" class="section-title">Tips For You</h2> <div class="tips-cards">
+          <article class="tip-card" data-tip="1"><h3>Hijab Friendly layering for Petite Frame</h3></article> <article class="tip-card" data-tip="2"><h3>Layering Dark Coquette for colder weather</h3></article> <article class="tip-card" data-tip="3"><h3>How to balance accessories & proportions</h3></article> </div>
+        <div id="tipsDetail" class="tips-detail hidden" aria-live="polite"></div>
+      </div>
+    </section>
+
+  <section id="profile" class="page hidden" aria-labelledby="profileTitle">
+  <div class="profile-inner">
+    <h2 id="profileTitle" class="section-title">Your Private Gallery</h2>
+
+    <div class="profile-layout-container">
+    
+        <article class="profile-data-card">
+            
+            <div class="avatar-placeholder article-avatar">
+                <img src="assets/images/elzy.jpg" alt="Zahra's profile avatar" class="profile-avatar-img">
+            </div>
+
+            <div class="profile-info-group">
+                <label>Name 
+                  <input id="profileName" type="text" value="Zahra" placeholder="name">
+                </label>
+                
+                <label>Email 
+                  <input id="profileEmail" type="email" value="lailaazahira1@gmail.com" placeholder="email">
+                </label>
+                
+                <label>Bio (About me) 
+                  <textarea id="profileBio" placeholder="Moodboard enthusiast..." rows="3">I'm on my 3rd semester Informatics Engineering student in Dumai University .</textarea>
+                </label>
+            </div>
+
+            <div class="profile-actions">
+              <button id="loginBtn" class="btn-primary">Log In</button>
+              <button id="logoutBtn" class="btn-secondary">Log Out</button>
+            </div>
+        </article>
+
+        <aside class="saved-area" aria-labelledby="savedOutfitsTitle">
+            
+            <div class="aside-logo-wrap">
+                <img src="assets/images/logo.png" alt="Saved Outfits Icon" class="aside-icon-img" style="width: 50px; height: 50px;">
+            </div>
+
+            <h3 id="savedOutfitsTitle" class="section-subtitle">Saved Outfits</h3>
+            <p>View your favorite outfit combinations saved from the Style Page Level 3.</p>
+            
+            <button id="viewSavedBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">View Saved Outfits</button>
+            
+            <div id="savedList" class="saved-list hidden" aria-live="polite">
+                </div>
+        </aside>
+
+    </div>
+  </div>
+</section>
+<section id="help" class="page hidden" aria-labelledby="helpTitle">
+      <div class="help-inner">
+        <h2 id="helpTitle" class="section-title">Help & Guidance</h2> 
+        <p>Having trouble navigating Elzy’s Moodboard?</p>
+        
+        <nav aria-label="Quick Guide">
+          <ul>
+            <li>Click ‘Style’ to choose your outfit.</li>
+            <li>Use ‘Tips’ for inspirations.</li>
+            <li>Saved outfits appear in Profile.</li>
+          </ul>
+        </nav>
+        
+        <div class="contact-card">
+          <h3>Contact Info</h3> 
+          <p>Email: lailaazahira1@gmail.com</p>
+          <p>IG: @els.miffy</p>
+          <img src="assets/images/logo.png" alt="Elzy Logo" style="width: 50px; height: 50px; margin: 10px auto 0; display: block;">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+      <p>&copy; 2025 Elzy's Moodboard. All rights reserved. | <a href="#">About Us</a></p>
+  </footer>
+
+  <dialog id="popupChoose" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="close-x" data-action="close">✕</button>
+      <div id="popupChooseContent"></div>
+      <div class="modal-actions">
+        <button id="favBtn" class="btn-primary">Favorite / Save</button>
+        <button id="chooseAnother" class="btn-secondary">Choose another</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="popupComplete" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="close-x" data-action="close">✕</button>
+      <h3>Perfect! Thank you for trusting Elzy's pick.</h3>
+      <div class="modal-actions">
+        <button id="okComplete" class="btn-primary">OK</button>
+      </div>
+    </div>
+  </dialog>
+
+</body>
+</html>
