@@ -1,1 +1,709 @@
+/* ============= FONTS ============= */
+@font-face {
+  font-family: 'CoralinesCat';
+  src: local('CoralinesCat'),
+       url('../assets/fonts/CoralinesCat.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DKCrayonCrumble';
+  src: local('DKCrayonCrumble'),
+       url('../assets/fonts/DKCrayonCrumble.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
 
+/* ============= THEME ============= */
+:root {
+  --accent: #f7cad0; /* pastel pink */
+  --bg: #ffffff;
+  --muted: #faf8fa;
+  --text: #111;
+  --card-shadow: rgba(0,0,0,0.06);
+  --lace-image: url('../assets/images/lace_background.jpeg'); /* Variabel baru */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DKCrayonCrumble', sans-serif;
+  color: var(--text);
+  background: url('../assets/images/polkadot_background.jpeg') center top repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  
+  position: relative; 
+  min-height: 100vh;
+  padding-top: 60px;  /* Ruang agar konten tidak tertutup header */
+  padding-bottom: 60px; /* Ruang agar konten tidak tertutup footer */
+}
+
+/* Apply font rule globally */
+body, button, select, input, p, h1, h2, h3, h4, h5, h6 {
+  font-family: 'DKCrayonCrumble', sans-serif !important;
+}
+.brand-title {
+  font-family: 'CoralinesCat' !important;
+}
+
+/* ============= HEADER (LACE FIX) ============= */
+.site-header {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60; 
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  
+  /* LACE BACKGROUND FIX */
+  background: var(--lace-image) center top / cover no-repeat;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  height: 60px; /* Tinggi disesuaikan */
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; }
+.brand-title { font-size: 20px; letter-spacing: 0.6px; color: #222; }
+.main-nav { display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: 'DKCrayonCrumble' !important;
+  font-size: 16px;
+}
+.nav-btn:hover { background: rgba(0,0,0,0.04); }
+
+/* ============= PAGES ============= */
+.pages { 
+  padding: 26px; 
+  min-height: calc(100vh - 120px); 
+  position: relative; 
+  z-index: 55; 
+}
+.page { display: none; animation: fadeIn .36s ease both; }
+.page.active, .page:not(.hidden) { display: block; }
+.hidden { display: none !important; }
+
+/* ============= LANDING ============= */
+.landing-inner {
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 16px 24px;
+  background: rgba(255, 250, 247, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.landing-logo {
+  width: 120px;
+  margin-bottom: 10px;
+}
+.landing-h1 {
+  font-size: 26px;
+}
+.landing-p { max-width: 720px; margin: 0 auto 18px; color: #333; font-size: 1rem; }
+
+.btn-primary {
+  background: var(--accent);
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: 'CoralinesCat';
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(247,202,208,0.18);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.btn-primary:hover { transform: translateY(-3px); }
+
+/* ============= CAROUSEL ============= */
+/* ============= CAROUSEL ============= */
+.home-inner { 
+    max-width: 980px; 
+    margin: 0 auto; 
+    text-align: center; /* DIKEMBALIKAN KE CENTER */
+}
+.carousel-wrap {
+  overflow: hidden;
+  margin: 12px auto;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.9);
+  padding: 18px;
+  box-shadow: 0 6px 20px var(--card-shadow);
+}
+.carousel-track {
+  display: flex; 
+  gap: 14px;
+  transition: transform .5s cubic-bezier(.22,.9,.37,1);
+}
+.carousel-item {
+  min-width: 240px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.carousel-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.carousel-item .caption { padding: 10px; font-weight: 700; font-family: 'CoralinesCat'; }
+
+/* CONTAINER: Mengatur agar isinya sejajar */
+.carousel-footer {
+  display: flex; 
+  align-items: center;
+  justify-content: center; /* DIUBAH KE CENTER UNTUK MEMUSATKAN KONTEN DI FOOTER */
+  margin-top: 12px;
+  padding: 0 10px;
+}
+
+/* FIX FILL & FONT: Membungkus teks dalam div dengan background putih */
+.home-text-block {
+    text-align: center; /* DIKEMBALIKAN KE CENTER UNTUK TAMPILAN VISIO */
+    /* Hapus flex: 1; agar blok teks tidak mengambil semua ruang horizontal */
+    padding: 8px 15px; /* Tambahkan sedikit padding */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7); /* FILL PUTIH */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-right: 15px;
+}
+
+/* Hapus text-shadow dan pastikan font-nya benar */
+.home-sub { 
+  font-size: 1.05rem; 
+  color: #333; 
+  margin: 0 0 3px 0; 
+  text-shadow: none; /* Hapus Text Shadow */
+}
+.home-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+    text-shadow: none; /* Hapus Text Shadow */
+}
+
+/* Kontrol geser tetap di kanan (jika dipisahkan di HTML) */
+.home-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ============= FILTERS (LABEL STYLING FIX) ============= */
+/* ============= FILTERS (LABEL STYLING FIX) ============= */
+.styles-inner { max-width: 1000px; margin: 0 auto; }
+.section-title { font-family: 'CoralinesCat'; font-size: 22px; margin-bottom: 10px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+
+/* Styling untuk elemen Label yang membungkus select */
+.filters label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #444;
+   /* PENGEMBALIAN FILL PUTIH UNTUK KONTRAST */
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: none !important;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0, 0.8);
+    /* padding: 0; dihilangkan karena padding di atas sudah diterapkan */
+
+}
+.filters select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  margin-top: 4px; /* Sedikit jarak dari label */
+}
+.style-grid { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+/* ============= STYLE CARDS ============= */
+.style-card {
+  width: 180px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+  text-align: center;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.style-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+.style-card img { width: 100%; height: 140px; object-fit: cover; }
+.style-card .style-name { padding: 8px; font-weight: 700; }
+
+/* ============= STYLE2 / STYLE3 ============= */
+.category-grid {
+  display: flex; 
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.category-btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px dashed rgba(182, 173, 173, 0.459);
+  background: #f8e0e0;
+  cursor: pointer;
+  font-weight: 700;
+}
+.items-grid {
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.item-card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  text-align: center;
+  cursor: pointer;
+  transition: transform .16s ease;
+}
+.item-card:hover { transform: translateY(-6px); }
+.item-card img { width: 100%; height: 150px; object-fit: contain; border-radius: 10px; }
+
+/* ============= TIPS ============= */
+.tips-cards { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.tip-card {
+  width: 300px;
+  background: #fae6e6;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform .16s ease;
+}
+.tip-card:hover { transform: translateY(-6px); }
+.tips-detail {
+  margin-top: 14px;
+  background: #d3cdcf;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+/* ============= HELP PAGE FIX ============= */
+.help-inner {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #fff8f1;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+}
+.contact-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* ============= PROFILE (FIXED LAYOUT) ============= */
+.profile-inner { 
+    max-width: 800px; /* Lebarkan sedikit */
+    margin: 0 auto; 
+}
+/* Container utama untuk layout dua kolom */
+.profile-layout-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Agar kolom tidak meregang penuh */
+    margin-top: 20px;
+}
+@media (max-width: 720px) {
+    .profile-layout-container {
+        flex-direction: column; /* Ubah ke satu kolom di mobile */
+    }
+}
+
+/* KARTU ARTIKEL (Data Diri) */
+.profile-data-card { /* Diganti dari .profile-card */
+    flex: 2; /* Kolom ini mengambil porsi lebih besar */
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+/* Avatar */
+.avatar-placeholder { 
+    width: 100px; height: 100px; 
+    border-radius: 50%; 
+    margin: 0 auto 15px auto;
+    overflow: hidden;
+    border: 4px solid var(--accent);
+}
+.profile-avatar-img { 
+    width: 100%; height: 100%; object-fit: cover; 
+}
+
+/* Info Group (Nama, Email, Bio) */
+.profile-info-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.profile-info-group label { 
+    display: block; 
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.profile-info-group input, 
+.profile-info-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 4px;
+    font-family: 'DKCrayonCrumble', sans-serif !important;
+}
+
+/* Tombol Aksi */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+
+/* ASIDE (Saved Outfits) */
+.saved-area {
+    flex: 1; /* Kolom ini mengambil porsi lebih kecil */
+    background: #fae6e6; /* Warna latar berbeda */
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.section-subtitle { /* Styling untuk h3 di aside */
+    font-family: 'CoralinesCat'; 
+    font-size: 1.2rem; 
+    margin-bottom: 8px;
+}
+
+/* ============= FOOTER (LACE FIX) ============= */
+.site-footer {
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60; 
+  text-align: center;
+  padding: 18px;
+  font-size: 0.9rem;
+  color: #555;
+  
+  /* LACE BACKGROUND FIX */
+  background: var(--lace-image) center top / cover no-repeat;
+  transform: rotate(180deg); /* Diputar agar renda di bawah */
+  height: 60px; /* Tinggi disesuaikan */
+  padding-top: 10px; 
+}
+.site-footer p, .site-footer a { 
+  transform: rotate(180deg); /* Konten diputar balik agar terbaca */
+  /*Fix paksa 'a' menjadi inline-block agar transform bekerja. */
+  display: inline-block
+  width: 100%;
+  color: #555; text-decoration: none; 
+}
+
+
+/* ============= MODAL ============= */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  background: rgba(0,0,0,0.28);
+}
+.modal-inner {
+  width: 360px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  padding: 18px;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+
+/* ============= ANIMATIONS ============= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  from { transform: translateY(8px) scale(.98); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 720px) {
+  .carousel-item { min-width: 180px; flex: 0 0 180px; }
+  .items-grid { grid-template-columns: repeat(2, 1fr); }
+  .tip-card { width: 90%; }
+}
+/* Fix font di home carousel */
+.carousel-item .caption {
+  font-family: 'DKCrayonCrumble' !important;
+  font-size: 1.1rem;
+}
+
+/* FIX FINAL KONTRAST: JUDUL UTAMA (Filter, Tips For You, Your Private Gallery) */
+.section-title { 
+    /* Ini menimpa .section-title yang lama dan menambahkan background */
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 8px 15px;
+    border-radius: 12px;
+    display: inline-block; /* Agar kotak fill hanya selebar teks */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #111; /* Memastikan warna teks gelap */
+}
+/* FIX FINAL KONTRAST: STYLE PAGE LEVEL 2 - Choose Outfit Category */
+.choose-text {
+    background: rgba(255, 255, 255, 0.945);
+    padding: 5px 10px;
+    border-radius: 8px;
+    
+    /* PERUBAHAN KRITIS: Mengembalikan ke BLOCK agar turun ke bawah */
+    display: block; 
+    
+    /* Tambahan margin agar ada jarak dari Current Style */
+    margin: 10px auto 10px auto; 
+    
+    /* Mengatur lebar agar tidak melebar 100% jika display block */
+    width: fit-content; 
+    
+    box-shadow: 0 2px 8px rgba(58, 56, 56, 0.295);
+    color: #111;
+}
+/* FIX FINAL KONTRAST TEKS: HOME PAGE TEXT BLOCKS */
+.home-text-block {
+    background: rgba(255, 255, 255, 0.95) !important; 
+    box-shadow: 0 6px 16px rgba(247, 236, 236, 0.1) !important; 
+    padding: 12px 20px !important;
+    border-radius: 14px !important;
+    margin: 15px auto; 
+    
+    /* MENAMBAH WARNA DI KOTAK PEMBUNGKUS UTAMA */
+    color: #020202 !important; 
+}
+
+/* TARGET SPESIFIK: Mengubah warna semua teks di dalamnya secara paksa */
+.home-text-block h3, 
+.home-text-block p, 
+.home-description {
+    color: #030303 !important; /* HARUS GELAP: #111 atau #333 */
+}
+/* ======================================= */
+/* FIX FINAL: POSISI & TAMPILAN CAROUSEL */
+/* ======================================= */
+
+/* 1. Mengatur Container Carousel agar tombol melayang di dalamnya */
+.carousel-wrapper { 
+    position: relative; /* HARUS RELATIVE! */
+    overflow: hidden; /* Mengamankan area gambar */
+}
+/* FIX FINAL: Menjamin Tombol Carousel Nampak */
+.home-controls button {
+    background: rgba(252, 248, 248, 0.95) !important; /* FILL PUTIH KUAT */
+    color: #111 !important; /* Ikon gelap */
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 50%; /* Bulat */
+    /* JANGAN TAMBAH: position, top, transform, justify-content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.411) !important; /* Membuat tombol timbul */
+    cursor: pointer;
+}
+/* ============= PROFILE (FIXED LAYOUT & SEMANTIC TERBAIK) ============= */
+.profile-inner { 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+/* Container utama untuk layout dua kolom */
+.profile-layout-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; 
+    margin-top: 20px;
+}
+@media (max-width: 720px) {
+    .profile-layout-container {
+        flex-direction: column; 
+    }
+}
+
+/* KARTU ARTIKEL (Data Diri - Kolom Kiri) */
+.profile-data-card { 
+    flex: 2; /* Kolom ini lebih besar */
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    text-align: center; /* Untuk menengahkan Avatar */
+}
+
+/* Avatar (Kembali di dalam Article) */
+.avatar-placeholder { 
+    width: 100px; height: 100px; 
+    border-radius: 50%; 
+    margin: 0 auto 15px auto; /* Di tengah kolom kiri */
+    overflow: hidden;
+    border: 4px solid var(--accent);
+}
+.profile-avatar-img { 
+    width: 100%; height: 100%; object-fit: cover; 
+}
+
+/* Info Group (Nama, Email, Bio) */
+.profile-info-group {
+    text-align: left; /* Rata kiri untuk teks */
+    margin-bottom: 20px;
+}
+.profile-info-group label { 
+    display: block; 
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.profile-info-group input, 
+.profile-info-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 4px;
+    font-family: 'DKCrayonCrumble', sans-serif !important;
+}
+
+/* Tombol Aksi */
+.profile-actions {
+    display: flex;
+    justify-content: center; /* Menengahkan tombol Log In/Out */
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* ASIDE (Saved Outfits & Logo - Kolom Kanan) */
+.saved-area {
+    flex: 1; 
+    background: #fae6e6; 
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center; 
+}
+.aside-logo-wrap {
+    margin-bottom: 15px;
+}
+
+.section-subtitle { 
+    font-family: 'CoralinesCat'; 
+    font-size: 1.2rem; 
+    margin-bottom: 8px;
+}
+/* ============= FIX AKHIR: TEXT BLOCK HOME PAGE ============= */
+
+/* 1. Mengatur tampilan kotak teks utama */
+.home-text-block {
+    /* Menimpa background agar menjadi putih solid dan kontras */
+    background: rgb(241, 228, 228) !important; 
+    padding: 18px 25px !important; /* Tambah padding agar lega */
+    border-radius: 14px !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1) !important; /* Bayangan tipis */
+    
+    /* Mengatur posisi di tengah (jika flex container di bawah) */
+    margin: 15px auto; 
+    width: fit-content; /* Kotak hanya selebar konten */
+    max-width: 90%;
+}
+
+/* 2. Mengatur kontainer footer (Carousel Footer) */
+.carousel-footer {
+    display: flex;
+    flex-direction: column; /* Ubah ke kolom agar blok teks di atas kontrol */
+    align-items: center; /* Pusatkan semua item (teks dan kontrol) */
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* 3. Memastikan warna teks gelap */
+.home-text-block h3, 
+.home-text-block p, 
+.home-description {
+    color: #111 !important; /* Pastikan teks tetap gelap */
+    text-shadow: none !important; 
+}
+/* ============= FIX AKHIR: KONTRAST TOMBOL NAVIGASI ============= */
+
+.nav-btn {
+  /* Menimpa background agar menjadi fill putih */
+  background: rgba(255, 255, 255, 0.9); 
+  border: 1px solid rgba(0,0,0,0.1); /* Tambah border tipis */
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #111; /* Pastikan teks gelap */
+  
+  /* Hapus atau timpa properti sebelumnya jika ada konflik */
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.nav-btn:hover { 
+  background: var(--accent); /* Warna pink pastel saat di-hover */
+  color: #fff; /* Teks putih saat di-hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+/* ============= FIX SANGAT AKHIR: MENAMPILKAN & MEMBERI FILL PADA H2 HOME DENGAN FONT CONTENT ============= */
+
+#home #homeTitle {
+    /* Bagian Kritis: Menimpa properti "visually-hidden" */
+    position: static !important;
+    clip: auto !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    margin-bottom: 20px; /* Jarak dari carousel */
+    
+    /* 1. FONT TETAP DEFAULT (DKCrayonCrumble) */
+    font-family: 'DKCrayonCrumble', sans-serif !important;
+    font-size: 20px; /* Ukuran yang sesuai untuk heading konten */
+    font-weight: 700;
+    
+    /* 2. MEMBERIKAN FILL PUTIH (Gaya yang Anda inginkan) */
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 8px 15px;
+    border-radius: 12px;
+    display: inline-block; /* Agar kotak fill hanya selebar teks */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #111; /* Warna teks gelap */
+}
+
+/* Memastikan elemen di dalam home-inner tetap di tengah */
+.home-inner { 
+    text-align: center; 
+}
